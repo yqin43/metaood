@@ -9,7 +9,7 @@
 
 ## Meta Features Generation
 
-The meta features generation code is organized in the `./meta_feature` folder. Here is a breakdown of the different scripts and the features they generate:
+The meta features generation codes are organized in the `./meta_feature` folder. Here is a breakdown of the different scripts and the features they generate:
 
 - **Statistical Meta Features**: Use `stats_mf.py` to generate various statistical meta features.
 - **Earth Mover's Distance Feature**: Use `earth_mover.py` to generate the Earth Mover's Distance feature.

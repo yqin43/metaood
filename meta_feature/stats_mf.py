@@ -12,6 +12,7 @@ from scipy.stats import moment
 from scipy.stats import normaltest
 from scipy.stats import skew, kurtosis
 import time
+import cv2
 
 def sobel_filter(image):
     # Define Sobel operator kernels

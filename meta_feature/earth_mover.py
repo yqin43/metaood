@@ -16,3 +16,7 @@ def calculate_emd(histograms1, histograms2):
     emd = wasserstein_distance(avg_hist1, avg_hist2)
     return emd
 
+def run(loader1, loader2):
+    histograms1 = compute_histograms(loader1)
+    histograms2 = compute_histograms(loader2)
+    return calculate_emd(histograms1, histograms2)

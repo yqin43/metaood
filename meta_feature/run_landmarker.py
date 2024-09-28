@@ -22,21 +22,21 @@ in_data_lst = ['cifar10','cifar100','imagenet','fashionmnist']
 ood_data_lst = ['cifar10','cifar100','mnist','places365','svhn','texture','tin','ssb_hard','ninco','inaturalist','textures','openimage_o']
 
 directory_list_0 = [
-            '/home/yuehanqi/OpenOOD/data/benchmark_imglist/cifar10/test_cifar10.txt',
-            '/home/yuehanqi/OpenOOD/data/benchmark_imglist/cifar100/test_cifar100.txt',
-            '/home/yuehanqi/OpenOOD/data/benchmark_imglist/mnist/test_mnist.txt',
-            '/home/yuehanqi/OpenOOD/data/benchmark_imglist/cifar100/test_places365.txt',
-            '/home/yuehanqi/OpenOOD/data/benchmark_imglist/cifar100/test_svhn.txt',
-            '/home/yuehanqi/OpenOOD/data/benchmark_imglist/cifar100/test_texture.txt',
-            '/home/yuehanqi/OpenOOD/data/benchmark_imglist/cifar100/test_tin.txt'
+            'data/benchmark_imglist/cifar10/test_cifar10.txt',
+            'data/benchmark_imglist/cifar100/test_cifar100.txt',
+            'data/benchmark_imglist/mnist/test_mnist.txt',
+            'data/benchmark_imglist/cifar100/test_places365.txt',
+            'data/benchmark_imglist/cifar100/test_svhn.txt',
+            'data/benchmark_imglist/cifar100/test_texture.txt',
+            'data/benchmark_imglist/cifar100/test_tin.txt'
         ]
 
 directory_list_1 = [
-    "/home/yuehanqi/OpenOOD/data/benchmark_imglist/imagenet200/test_ssb_hard.txt",
-    "/home/yuehanqi/OpenOOD/data/benchmark_imglist/imagenet200/test_ninco.txt",
-    "/home/yuehanqi/OpenOOD/data/benchmark_imglist/imagenet200/test_inaturalist.txt",
-    "/home/yuehanqi/OpenOOD/data/benchmark_imglist/imagenet200/test_textures.txt",
-    "/home/yuehanqi/OpenOOD/data/benchmark_imglist/imagenet200/test_openimage_o.txt"
+    "data/benchmark_imglist/imagenet200/test_ssb_hard.txt",
+    "data/benchmark_imglist/imagenet200/test_ninco.txt",
+    "data/benchmark_imglist/imagenet200/test_inaturalist.txt",
+    "data/benchmark_imglist/imagenet200/test_textures.txt",
+    "data/benchmark_imglist/imagenet200/test_openimage_o.txt"
 ]
 
 class CustomDataset(Dataset):
@@ -159,8 +159,8 @@ for d1 in in_data_lst:
     elif d1 == 'imagenet':
         print('imgnet loaded')
         trans = ResNet50_Weights.IMAGENET1K_V1.transforms()
-        data = datasets.ImageNet('/home/yuehanqi/OpenOOD/data/images_largescale/imagenet_1k/train1', split='val', transform=trans)
-        train_d = datasets.ImageNet('/home/yuehanqi/OpenOOD/data/images_largescale/imagenet_1k/train1', split='train', transform=trans)
+        data = datasets.ImageNet('data/images_largescale/imagenet_1k/train1', split='val', transform=trans)
+        train_d = datasets.ImageNet('data/images_largescale/imagenet_1k/train1', split='train', transform=trans)
         model = resnet50(ResNet50_Weights.IMAGENET1K_V1).eval().to(device)
         
     else: # cifar10 and cifar100
@@ -172,9 +172,9 @@ for d1 in in_data_lst:
                 transforms.ToTensor(),
                 transforms.Normalize(std=std, mean=mean),
             ])
-        img_dir = "/home/yuehanqi/OpenOOD/data/images_classic"
-        txt_dir = f'/home/yuehanqi/OpenOOD/data/benchmark_imglist/{d1}/test_{d1}.txt'
-        txt_d_dir = f'/home/yuehanqi/OpenOOD/data/benchmark_imglist/{d1}/train_{d1}.txt'
+        img_dir = "data/images_classic"
+        txt_dir = f'data/benchmark_imglist/{d1}/test_{d1}.txt'
+        txt_d_dir = f'data/benchmark_imglist/{d1}/train_{d1}.txt'
         
         data = CustomDataset(txt_path=txt_dir, img_dir=img_dir, transform=trans)
         train_d = CustomDataset(txt_path=txt_d_dir, img_dir=img_dir, transform=trans)
@@ -195,15 +195,15 @@ for d1 in in_data_lst:
         directory_list = directory_list_0
 
     for txt_dir in directory_list:
-        img_dir = "/home/yuehanqi/OpenOOD/data/images_classic"
+        img_dir = "data/images_classic"
         test_out.append(
             CustomDataset(txt_path=txt_dir, img_dir=img_dir, transform=trans, target_transform=ToUnknown())
         )
 
     for txt_dir in directory_list_1:
-        img_dir = "/home/yuehanqi/OpenOOD/data/images_largescale"
+        img_dir = "data/images_largescale"
         if 'textures' in txt_dir:
-            img_dir = "/home/yuehanqi/OpenOOD/data/images_classic"
+            img_dir = "data/images_classic"
         test_out.append(
             CustomDataset(txt_path=txt_dir, img_dir=img_dir, transform=trans, target_transform=ToUnknown())
         )

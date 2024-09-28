@@ -165,7 +165,7 @@ def fit(train_loader, model, optimizer, epochs, loss_name=None, val_loader=None,
     return i
 
 def run(train_idx, test_idx):
-    full_landmarker_msp = np.load('/home/yuehanqi/ood/full_mf.npy')
+    full_landmarker_msp = np.load('data/full_mf.npy')
     meta_features= full_landmarker_msp[train_idx]
     # components.shape # 11 methods, 358 dim meta_feature
     meta_features= np.nan_to_num(meta_features, nan=0)
@@ -173,7 +173,7 @@ def run(train_idx, test_idx):
     
     num_train = len(train_idx)
     components = np.eye(num_methods)
-    p_df = pd.read_csv('/home/yuehanqi/ood/pmatrix_full_copy.csv')
+    p_df = pd.read_csv('data/pmatrix_full_copy.csv')
     p = p_df.iloc[1:, 1:]
     performances = p.to_numpy().astype(float).transpose()[train_idx] # P
 

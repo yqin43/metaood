@@ -19,8 +19,8 @@ test_idxs = [np.r_[0:6*num_methods], #test on cifar10
              np.r_[34*num_methods:41*num_methods] #test on fashionMNIST
              ]
 
-dataset_emb = np.load('../baselines/d_emb.npy')
-method_emb = np.load('../baselines/m_emb.npy')
+dataset_emb = np.load('d_emb.npy')
+method_emb = np.load('m_emb.npy')
 
 combined_f = []
 for i in range(dataset_emb.shape[0]):
@@ -28,7 +28,7 @@ for i in range(dataset_emb.shape[0]):
     combined_f.append(np.concatenate((dataset_emb[i], method_emb[j]), axis=0))
 combined_f = np.array(combined_f)#506 2662
 
-p_df = pd.read_csv('/home/yuehanqi/ood/pmatrix_full_copy.csv')
+p_df = pd.read_csv('data/pmatrix_full_copy.csv')
 p = p_df.iloc[1:, 1:]
 performances = p.to_numpy().astype(float).transpose() # P
 

@@ -5,7 +5,7 @@
 - `stats_mf.py`: Script to generate statistical meta features.
 - `earth_mover.py`: Script to compute the Earth Mover's Distance feature.
 - `landmarker.py`: Script to load the data and generate landmarker features.
-- `metaood.py`: Script to run MetaOOD.
+- `metaood/metaood.py`: Script to run MetaOOD.
 
 ## Meta Features Generation
 

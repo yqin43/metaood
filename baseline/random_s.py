@@ -17,7 +17,3 @@ def random_s(train_idx, test_idx):
     for i in range(test_idx.shape[0]):
         pred_score.append(p_test[i][pred_idx[i]])
     return pred_score
-
-# train_idx = np.r_[17:22, 29:34, 41:46]
-# test_idx = np.r_[0:6]
-# print(random_s(train_idx, test_idx))

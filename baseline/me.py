@@ -12,4 +12,6 @@ def me(train_idx, test_idx):
     
     test_p = p[test_idx]
     predict_score = np.mean(test_p, axis=1)
-    return predict_score
+    max_idx = np.argmax(predict_score)
+    max_values = [test_p[i][max_idx] for i in range(test_p.shape[0])]
+    return max_values

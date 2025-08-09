@@ -1,0 +1,11 @@
+'Openmax': 'Determines a center for each class in the logits space of a model, then creates a statistical model of the distances of correctly classified inputs. It uses extreme value theory to detect outliers by fitting a Weibull function to the tail of the distance distribution. The activation of the unknown class is used as the outlier score.',
+'MCD': 'Forward-propagates the input through the model multiple times with activated dropout and averages the results. The outlier score is then calculated in either mean or variance mode.',
+'ODIN': 'A preprocessing method for inputs aimed at increasing the discriminability of softmax outputs for IN and OOD data. It requires two forward passes and one backward pass.',
+'Mahalanobis': 'Calculates a class center for each class and a shared covariance matrix from the data. It also uses ODIN preprocessing.',
+'EnergyBased': 'Calculates the negative energy for a vector of logits. This value is used as the outlier score.',
+'Entropy': 'Calculates the entropy based on the logits of a classifier. Higher entropy indicates more uniformly distributed posteriors, suggesting greater uncertainty.',
+'MaxLogit': 'Implements the Max Logit Method for OOD Detection, as proposed in Scaling Out-of-Distribution Detection for Real-World Settings.',
+'KML': 'Estimates a typical posterior distribution for each class, where the class with the maximum posterior is predicted by the model. The KL-Divergence between the observed and the typical posterior is used as the outlier score.',
+'ViM': 'Implements Virtual Logit Matching (ViM) from the paper ViM: Out-Of-Distribution Detection with Virtual-logit Matching.',
+'MSP': 'Implements the Maximum Softmax Probability (MSP) Thresholding baseline for OOD detection.',
+'KNN': 'Implements the detector from the paper Out-of-Distribution Detection with Deep Nearest Neighbors. Fits a nearest neighbor model to the IN samples and uses the distance from the nearest neighbor as the outlier score.'

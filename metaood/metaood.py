@@ -26,7 +26,7 @@ combined_f = []
 for i in range(dataset_emb.shape[0]):
   for j in range(num_methods):
     combined_f.append(np.concatenate((dataset_emb[i], method_emb[j]), axis=0))
-combined_f = np.array(combined_f)#506 2662
+combined_f = np.array(combined_f)#506 2304
 
 p_df = pd.read_csv('data/pmatrix_full_copy.csv')
 p = p_df.iloc[1:, 1:]

@@ -35,7 +35,7 @@ performances = p.to_numpy().astype(float).transpose() # P
 performances = performances.flatten().reshape(combined_f.shape[0],1)
 
 num_rounds = 100  # Number of boosting rounds
-params = {"max_leaves": 120, "min_child_weight": 24, "learning_rate": 0.3}
+params = {"n_estimators": 91, "max_leaves": 21, "min_child_weight": 0.002, "learning_rate": 0.47337262719983014, "subsample": 0.809298692090391, "reg_alpha": 0.0009765625, "reg_lambda": 14.520554328563719}
 
 xgboost_result = []
 for i in range(len(train_idxs)):
